@@ -15,3 +15,4 @@ gale.subscribe(
         gale.snapshot(chars)
     )
 )
+window.chars = chars

@@ -1,35 +1,35 @@
 import * as gale from "@axel669/galejs"
-import * as ze from "../zephyr/main.js"
+// import * as ze from "../zephyr/main.js"
 
 import { chars } from "../state/chars.js"
 
-const Surface = gale.styled(ze.Paper)`
+const Surface = gale.style(gale.Paper)`
     #animate;
-    variant.outline;
+    var.outln;
     pos.abs;
     y: calc(@y + 24px);
     inset.x: 24px;
     t.c: @page-text-color;
-    elevate;
+    raised;
+`
+const FillButton = gale.style(gale.Button)`
+    var.fill;
 `
 
 export const NewChar = (props) => {
-    const list = gale.useShared(chars.list)
+    const list = gale.sharedState(chars.list)
 
-    const local = gale.useLocal({
+    const local = gale.localState({
         name: "",
     })
-    const boundName = {
-        value: local.name,
-        update: (e) => local.name = e.target.value,
-    }
     const add = (hide) =>
         () => {
-            chars.list.push({
+            list.push({
                 id: Date.now().toString(32),
                 name: local.name,
                 max: 0,
                 current: 0,
+                temp: 0,
                 success: 0,
                 fail: 0,
             })
@@ -40,38 +40,29 @@ export const NewChar = (props) => {
             local.name = ""
             hide()
         }
-    // const ws = gale.wind.x({
-    //     "#animate": true,
-    //     "variant.outline": true,
-    //     "pos.abs": true,
-    //     y: "calc(@y + 24px)",
-    //     "inset.x": "24px",
-    //     "t.c": "@page-text-color",
-    //     "elevate": true,
-    // })
 
     return (
-        <ze.Popover ws="grid;" persistent>
+        <gale.Popover ws="grid;" persistent>
             {#slot content:show}
-                <ze.Button onClick={show}>
-                    New
-                <//>
+            <gale.Button onClick={show}>
+                New
+            <//>
             {#/}
 
             {#slot overlay:hide}
-                <Surface>
-                    <ze.ControlLabel label="Charcter Name">
-                        <input type="text" $$value={boundName} />
+            <Surface>
+                <gale.ControlLabel label="Charcter Name">
+                    <input type="text" $$value={#local.name} />
+                <//>
+                <gale.Grid ws="gr.cols: 1fr 1fr;">
+                    <FillButton on:click={close(hide)} ws="@color: @error;">
+                        Cancel
                     <//>
-                    <ze.Grid ws="gr.cols: 1fr 1fr;">
-                        <ze.Button onClick={close(hide)} ws="variant.fill; @color: @error;">
-                            Cancel
-                        <//>
-                        <ze.Button onClick={add(hide)} ws="variant.fill; @color: @success;">
-                            Test
-                        <//>
+                    <FillButton on:click={add(hide)} ws="@color: @success;">
+                        Add
                     <//>
                 <//>
+            <//>
             {#/}
         <//>
     )
