@@ -38,6 +38,7 @@
     ".": "./dist/gale.min.js",
     "./dev": "./dist/gale.js",
     "./unstyled": "./dist/gale-unstyled.min.js",
-    "./unstyled-dev": "./dist/gale-unstyled.js"
+    "./unstyled-dev": "./dist/gale-unstyled.js",
+    "./rollup": "./compiler/rollup.js"
   }
 }
