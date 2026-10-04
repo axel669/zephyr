@@ -1,6 +1,6 @@
 {
-  "name": "@axel669/galejs",
-  "version": "0.1.0",
+  "name": "@axel669/zephyr",
+  "version": "1.0.0-dev.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,18 +13,20 @@
   "packageManager": "pnpm@10.9.0",
   "type": "module",
   "dependencies": {
+    "fs-jetpack": "^5.1.0",
+    "prettier": "^3.9.4"
+  },
+  "devDependencies": {
     "@axel669/rollup-html-input": "^0.1.2",
     "@axel669/windstorm": "1.0.0-beta.9",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-terser": "^1.0.0",
-    "fs-jetpack": "^5.1.0",
     "peggy": "^5.1.0",
     "preact": "10.29.3",
     "preact-render-to-string": "6.7.0",
     "preact-transitioning": "^1.5.3",
-    "prettier": "^3.9.4",
     "rolldown": "1.1.5",
     "rollup": "^4.62.2",
     "valtio": "2.3.2"
@@ -35,10 +37,14 @@
     "#state/*": "./test/state/*.js"
   },
   "exports": {
-    ".": "./dist/gale.min.js",
-    "./dev": "./dist/gale.js",
-    "./unstyled": "./dist/gale-unstyled.min.js",
-    "./unstyled-dev": "./dist/gale-unstyled.js",
+    ".": "./dist/zephyr.min.js",
+    "./dev": "./dist/zephyr.js",
+    "./unstyled": "./dist/zephyr-unstyled.min.js",
+    "./unstyled-dev": "./dist/zephyr-unstyled.js",
     "./rollup": "./compiler/rollup.js"
-  }
+  },
+  "files": [
+    "compiler",
+    "dist/"
+  ]
 }

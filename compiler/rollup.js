@@ -3,7 +3,7 @@ import fs from "fs-jetpack"
 import { transpile } from "./transpiler.js"
 
 const defaults = {
-    sourceImport: "@axel669/galejs"
+    sourceImport: "@axel669/zephyr"
 }
 export default (options) => {
     const opts = {
@@ -11,7 +11,7 @@ export default (options) => {
         ...options,
     }
     return {
-        name: "galejs",
+        name: "zephyr",
         async load(filepath) {
             if (filepath.includes("node_modules") === true) {
                 return null

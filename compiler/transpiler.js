@@ -115,7 +115,7 @@ export const transpile = (options) => {
     const {
         filename,
         source,
-        sourceImport = "@axel669/galejs",
+        sourceImport = "@axel669/zephyr",
     } = options
 
     let step = parser.parse(source)

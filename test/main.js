@@ -1,4 +1,4 @@
-import * as ze from "@axel669/galejs"
+import * as ze from "@axel669/zephyr"
 
 const $enter = [ze.fade(175), ze.drop(175), ze.slideTop(175)]
 const $exit = [ze.fade(175), ze.pop(175), ze.slideBottom(175)]
@@ -91,69 +91,98 @@ const Sidebar = () => {
 
 let count = 0
 const App = () => {
-    ze.sharedState(appstate)
-    const local = ze.localState({
-        open: false,
-        text: "",
-        selected: "wat1",
-        ref: null,
-    })
-    window.local = local
+    return (
+        <ze.App theme="tron" ws="*touch-action: manipulation;">
+            <ze.Card ws="r: 0px;">
+                {#slot header}
+                <ze.Titlebar ws="@color: @primary; var.fill;">
+                    <ze.Text title>
+                        Zephyr Testing
+                    <//>
 
-    console.log(
-        ze.snapshot(local)
-    )
-    const onclick = async () => {
-        console.log(
-            await ze.Dialog.show({
-                dialog: ze.Prompt,
-                message: "Testing?",
-                persistent: true,
-                dialogWS: "y: 25%;",
-                placeholder: "名前",
-                // $animate: [ze.spinCW(250), ze.fade(250), ze.pop(250)],
-            })
-        )
-    }
-    const showToast = () => {
-        count += 1
-        ze.Toaster.show({
-            pos: "bottomCenter",
-            content: `test: ${count}`,
-            $animate: [ze.fade(1000)],
-            timeout: 3000,
-        })
-    }
-
-    return <ze.App theme="tron" ws="*touch-action: manipulation;">
-        <ze.Card ws="r: 0px;">
-            {#slot header}
-            <ze.Titlebar ws="@color: @primary; var.fill;">
-                <ze.Text title>
-                    Zephyr Testing
-                <//>
-
-                {#slot menu}
-                <ze.Button on:click={() => appstate.menuOpen = true}>
-                    <ze.Icon name="menu-2" ws="t.sz: 20px;" />
+                    {#slot menu}
+                    <ze.Button on:click={() => appstate.menuOpen = true}>
+                        <ze.Icon name="menu-2" ws="t.sz: 20px;" />
+                    <//>
+                    {#/}
                 <//>
                 {#/}
-            <//>
-            {#/}
 
-            <AppSurface layout="2col-sidebar">
-                {#slot sidebar}
-                <Sidebar />
-                {#/}
+                <AppSurface layout="2col-sidebar">
+                    {#slot sidebar}
+                    <Sidebar />
+                    {#/}
 
-                <ze.Flex>
-                    <ze.Button on:click={showToast}>
-                        Toasty
+                    <ze.Text>
+                        This is some text for a cool app (i hope)
                     <//>
                 <//>
             <//>
         <//>
-    <//>
+    )
+    // ze.sharedState(appstate)
+    // const local = ze.localState({
+    //     open: false,
+    //     text: "",
+    //     selected: "wat1",
+    //     ref: null,
+    // })
+    // window.local = local
+
+    // console.log(
+    //     ze.snapshot(local)
+    // )
+    // const onclick = async () => {
+    //     console.log(
+    //         await ze.Dialog.show({
+    //             dialog: ze.Prompt,
+    //             message: "Testing?",
+    //             persistent: true,
+    //             dialogWS: "y: 25%;",
+    //             placeholder: "名前",
+    //             // $animate: [ze.spinCW(250), ze.fade(250), ze.pop(250)],
+    //         })
+    //     )
+    // }
+    // const showToast = () => {
+    //     count += 1
+    //     ze.Toaster.show({
+    //         pos: "bottomCenter",
+    //         content: `test: ${count}`,
+    //         $animate: [ze.fade(1000)],
+    //         timeout: 3000,
+    //     })
+    // }
+
+    // return <ze.App theme="tron" ws="*touch-action: manipulation;">
+    //     <ze.Card ws="r: 0px;">
+    //         {#slot header}
+    //         <ze.Titlebar ws="@color: @primary; var.fill;">
+    //             <ze.Text title>
+    //                 Zephyr Testing
+    //             <//>
+
+    //             {#slot menu}
+    //             <ze.Button on:click={() => appstate.menuOpen = true}>
+    //                 <ze.Icon name="menu-2" ws="t.sz: 20px;" />
+    //             <//>
+    //             {#/}
+    //         <//>
+    //         {#/}
+
+    //         <AppSurface layout="2col-sidebar">
+    //             {#slot sidebar}
+    //             <Sidebar />
+    //             {#/}
+
+    //             <ze.Flex>
+    //                 <ze.Button on:click={showToast}>
+    //                     Toasty
+    //                 <//>
+    //             <//>
+    //         <//>
+    //     <//>
+    // <//>
 }
 
 ze.renderApp(

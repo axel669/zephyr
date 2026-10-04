@@ -4,7 +4,7 @@ import terser from "@rollup/plugin-terser"
 import html from "@axel669/rollup-html-input"
 import replace from "@rollup/plugin-replace"
 
-import gale from "@axel669/galejs/rollup"
+import gale from "@axel669/zephyr/rollup"
 
 export default {
     input: "./test/index.html",
@@ -18,7 +18,7 @@ export default {
         resolve(),
         commonjs(),
         replace({
-            "@axel669/galejs": "@axel669/galejs/dev"
+            "@axel669/zephyr": "@axel669/zephyr/dev"
         }),
         terser(),
     ]
