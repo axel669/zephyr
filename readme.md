@@ -56,7 +56,7 @@ setup that is required, but it looks nicer in the file.
 ```js
 const Component = (props) => {
     #effect [props.thing] {
-        // do effec stuff here
+        // do effect stuff here
     }
 }
 ```
