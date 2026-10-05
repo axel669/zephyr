@@ -1,6 +1,6 @@
 {
   "name": "@axel669/zephyr",
-  "version": "1.0.0-dev.0",
+  "version": "1.0.0-dev.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@12.9.1",
   "type": "module",
   "dependencies": {
     "fs-jetpack": "^5.1.0",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@axel669/rollup-html-input": "^0.1.2",
-    "@axel669/windstorm": "1.0.0-beta.9",
+    "@axel669/windstorm": "1.0.0-beta.10",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
